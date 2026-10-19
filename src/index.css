@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #0B0B10;
+  --color-card: #1E1E23;
+  --color-accent: #3B82F6;
+  --color-foreground: #F8FAFC;
+  --color-muted-foreground: #94A3B8;
+  --color-border: #1E293B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0B0B10;
+  color: #F8FAFC;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Exo', sans-serif;
+}
+
+.scan-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.scan-overlay::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3B82F640, transparent);
+  animation: scan-line 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan-overlay::after {
+    animation: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.glow-text {
+  text-shadow: 0 0 40px #3B82F680, 0 0 80px #3B82F640;
+}
+
+.glow-border {
+  box-shadow: 0 0 0 1px #3B82F640, 0 0 30px #3B82F620;
+}
+
+.card-glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
